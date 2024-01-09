@@ -15,6 +15,10 @@
     justify-content: center;
     height: 100vh;
     position: relative;
+    background-image: url("./assets/tile_background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .form-prediction-wrapper {
     background: #ebebeb;
