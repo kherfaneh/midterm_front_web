@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <div id="container">
+    <h2>Gender Prediction Form</h2>
+    <form id="myForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label>
+        Gender:
+        <input type="radio" id="male" name="gender" value="male" required>
+        Male
+        <input type="radio" id="female" name="gender" value="female" required>
+        Female
+      </label>
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+    <p id="error-message"></p>
+    <div id="prediction-box">
+      <h2>Prediction</h2>
+      <p id="prediction">-</p>
+      <p id="accuracy">Accuracy: -%</p>
+      <button id="save-btn" onclick="saveResult()">Save</button>
+      <button id="clear-btn" onclick="clearLocalStorage()">Clear</button>
+    </div>
+    <div id="toast-notification" class="toast hide">
+      <span id="toast-message"></span>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
+
