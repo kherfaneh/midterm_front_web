@@ -53,8 +53,10 @@ function saveResult() {
         return;
     }
     showToast('Result saved to local storage.', type = 'success');
+    if (existingEntry) {
+        localStorage.setItem(name, JSON.stringify({ prediction, accuracy }));
+    }
 }
-
 
 function clearLocalStorage() {
     localStorage.clear();
@@ -77,5 +79,11 @@ function displaySavedData() {
         document.getElementById('prediction').innerText = '-';
         document.getElementById('accuracy').innerText = 'Accuracy: -%';
     }
+}
+function showToast(message, type = 'info') {
+    var toastNotification = document.getElementById('toast-notification');
+    var toastMessage = document.getElementById('toast-message');
+    toastMessage.innerText = message;
+    toastNotification.className = `toast ${type}`;
 }
 
