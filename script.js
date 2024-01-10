@@ -24,6 +24,7 @@ function submitForm() {
     if (name && genderRadio) {
         let gender = genderRadio.value;
         let apiUrl = `https://api.genderize.io/?name=${encodeURIComponent(name)}`;
+
         fetch(apiUrl)
             .then(response => {
                 if (!response.ok) {
@@ -35,6 +36,7 @@ function submitForm() {
                 displaySavedData();
                 document.getElementById('prediction').innerText = `Predicted Gender: ${data.gender}`;
                 document.getElementById('accuracy').innerText = `Accuracy: ${data.probability * 100}%`;
+
             })
             .catch(error => {
                 document.getElementById('error-message').innerText = `Fetch Error: ${error.message}`;
@@ -48,15 +50,23 @@ function saveResult() {
     let name = document.getElementById('name').value.trim();
     let prediction = document.getElementById('prediction').innerText;
     let accuracy = document.getElementById('accuracy').innerText;
+
     if (prediction === '-') {
         showToast('Cannot save empty prediction. Please submit the form first.', type = 'error');
         return;
     }
-    showToast('Result saved to local storage.', type = 'success');
+
+    let existingEntry = localStorage.getItem(name);
+
     if (existingEntry) {
         localStorage.setItem(name, JSON.stringify({ prediction, accuracy }));
+    } else {
+        localStorage.setItem(name, JSON.stringify({ prediction, accuracy }));
     }
+
+    showToast('Result saved to local storage.', type = 'success');
 }
+
 
 function clearLocalStorage() {
     localStorage.clear();
@@ -75,11 +85,12 @@ function displaySavedData() {
         document.getElementById('prediction').innerText = `${savedData.prediction}`;
         document.getElementById('accuracy').innerText = `Accuracy: ${savedData.accuracy}`;
     } else {
-        // If there's no saved data, reset the prediction box
         document.getElementById('prediction').innerText = '-';
         document.getElementById('accuracy').innerText = 'Accuracy: -%';
     }
 }
+
+
 function showToast(message, type = 'info') {
     var toastNotification = document.getElementById('toast-notification');
     var toastMessage = document.getElementById('toast-message');
@@ -87,9 +98,9 @@ function showToast(message, type = 'info') {
     toastNotification.className = `toast ${type}`;
     toastNotification.classList.remove('hide');
     toastNotification.classList.add('show');
+
     setTimeout(function () {
         toastNotification.classList.remove('show');
         toastNotification.classList.add('hide');
     }, 3000);
 }
-
