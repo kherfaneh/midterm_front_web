@@ -87,6 +87,5 @@ function showToast(message, type = 'info') {
     toastNotification.className = `toast ${type}`;
     toastNotification.classList.remove('hide');
     toastNotification.classList.add('show');
-
 }
 
