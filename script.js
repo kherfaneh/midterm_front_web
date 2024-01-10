@@ -53,8 +53,10 @@ function saveResult() {
         return;
     }
     showToast('Result saved to local storage.', type = 'success');
+    if (existingEntry) {
+        localStorage.setItem(name, JSON.stringify({ prediction, accuracy }));
+    }
 }
-
 
 function clearLocalStorage() {
     localStorage.clear();
