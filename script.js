@@ -80,4 +80,8 @@ function displaySavedData() {
         document.getElementById('accuracy').innerText = 'Accuracy: -%';
     }
 }
+function showToast(message, type = 'info') {
+    var toastNotification = document.getElementById('toast-notification');
+    var toastMessage = document.getElementById('toast-message');
+}
 
