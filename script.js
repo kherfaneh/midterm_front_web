@@ -83,5 +83,7 @@ function displaySavedData() {
 function showToast(message, type = 'info') {
     var toastNotification = document.getElementById('toast-notification');
     var toastMessage = document.getElementById('toast-message');
+    toastMessage.innerText = message;
+    toastNotification.className = `toast ${type}`;
 }
 
