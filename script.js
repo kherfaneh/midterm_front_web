@@ -25,7 +25,7 @@ function submitForm() {
 
     if (name && genderRadio) {
         let gender = genderRadio.value;
-        let apiUrl = `https://api.gender.io/?name=${encodeURIComponent(name)}`;
+        let apiUrl = `https://api.genderize.io/?name=${encodeURIComponent(name)}`;
 
         // Fetch data from the server
         fetch(apiUrl)
