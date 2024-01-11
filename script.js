@@ -14,7 +14,6 @@ function submitForm() {
         document.getElementById('error-message').innerText = 'Invalid name format. Please use only letters and spaces.';
         return;
     }
-
     // Validate name length
     if (name.length > 255) {
         document.getElementById('error-message').innerText = 'Name exceeds the maximum character limit of 255.';
